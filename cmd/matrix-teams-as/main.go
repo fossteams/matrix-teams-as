@@ -8,7 +8,7 @@ import (
 )
 
 var args struct {
-	Debug bool `arg:"-D" default:"false"`
+	Debug     bool   `arg:"-D" default:"false"`
 	MatrixUrl string `arg:"-u" default:"http://localhost:8008"`
 
 	HsToken string `arg:"-s,--home-server-token"`
@@ -19,6 +19,7 @@ func main() {
 	arg.MustParse(&args)
 
 	logger := logrus.New()
+	logger.SetLevel(logrus.DebugLevel)
 
 	var opts []server.OptFunction
 	if args.Debug {
@@ -46,6 +47,13 @@ func main() {
 	s, err := server.New("0.0.0.0:8003", opts...)
 	if err != nil {
 		logger.Fatalf("unable to create server: %v", err)
+	}
+
+	// initialize
+	err = s.Init()
+	if err != nil {
+		logger.Fatalf("unable to initialize server: %v", err)
+		return
 	}
 	err = s.Run()
 

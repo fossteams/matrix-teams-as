@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	github.com/alexflint/go-arg v1.4.2
+	github.com/fossteams/teams-api v0.0.0-20210608193737-ead87df795c2 // indirect
 	github.com/gin-gonic/gin v1.7.2
 	github.com/matrix-org/gomatrix v0.0.0-20210324163249-be2af5ef2e16
 	github.com/sirupsen/logrus v1.8.1

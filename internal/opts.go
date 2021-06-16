@@ -23,9 +23,8 @@ func WithAsToken(token string) func(s *Server) {
 	}
 }
 
-
 func WithMatrixUrl(url *url.URL) func(s *Server) {
-	return func(s *Server){
+	return func(s *Server) {
 		if url == nil {
 			return
 		}
@@ -34,7 +33,7 @@ func WithMatrixUrl(url *url.URL) func(s *Server) {
 }
 
 func WithLogger(logger *logrus.Logger) func(s *Server) {
-	return func(s *Server){
+	return func(s *Server) {
 		if logger == nil {
 			return
 		}
